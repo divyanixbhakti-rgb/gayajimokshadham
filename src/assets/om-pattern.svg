@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <defs>
+    <pattern id="om" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#E5A93C" stroke-width="0.6" opacity="0.16">
+        <circle cx="60" cy="60" r="46"/>
+        <circle cx="60" cy="60" r="38"/>
+        <path d="M60 12 a 6 6 0 0 1 0 12 a 6 6 0 0 1 0 -12 Z"/>
+        <g transform="rotate(45 60 60)"><path d="M60 12 a 6 6 0 0 1 0 12 a 6 6 0 0 1 0 -12 Z"/></g>
+        <g transform="rotate(90 60 60)"><path d="M60 12 a 6 6 0 0 1 0 12 a 6 6 0 0 1 0 -12 Z"/></g>
+        <g transform="rotate(135 60 60)"><path d="M60 12 a 6 6 0 0 1 0 12 a 6 6 0 0 1 0 -12 Z"/></g>
+        <g transform="rotate(180 60 60)"><path d="M60 12 a 6 6 0 0 1 0 12 a 6 6 0 0 1 0 -12 Z"/></g>
+        <g transform="rotate(225 60 60)"><path d="M60 12 a 6 6 0 0 1 0 12 a 6 6 0 0 1 0 -12 Z"/></g>
+        <g transform="rotate(270 60 60)"><path d="M60 12 a 6 6 0 0 1 0 12 a 6 6 0 0 1 0 -12 Z"/></g>
+        <g transform="rotate(315 60 60)"><path d="M60 12 a 6 6 0 0 1 0 12 a 6 6 0 0 1 0 -12 Z"/></g>
+        <text x="60" y="70" font-family="'Noto Sans Devanagari', 'Rozha One', serif" font-size="26" text-anchor="middle" stroke="none" fill="#E5A93C" opacity="0.28">ॐ</text>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="120" height="120" fill="url(#om)"/>
+</svg>
