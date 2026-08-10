@@ -43,8 +43,8 @@ const snapshot = () => document.body.textContent || '';
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 await wait(1200); // initial mount
 
-const navigate = async (hash) => {
-  dom.window.history.pushState(null, '', hash);
+const navigate = async (path) => {
+  dom.window.history.pushState(null, '', path);
   dom.window.dispatchEvent(new dom.window.PopStateEvent('popstate'));
   await new Promise((r) => setTimeout(r, 800));
 };
@@ -69,19 +69,19 @@ for (const lang of ['hi', 'en', 'bn', 'gu', 'pa']) {
 // Route navigation smoke tests (HashRouter)
 i18n.changeLanguage('hi');
 await wait(300);
-await navigate('#/booking');
+await navigate('/booking');
 expect('Route #/booking shows booking form', document.body.textContent.includes('यजमान का नाम'));
-await navigate('#/pitrapaksha');
+await navigate('/pitrapaksha');
 expect('Route #/pitrapaksha shows calendar', document.body.textContent.includes('सर्वपितृ अमावस्या'));
-await navigate('#/knowledge');
+await navigate('/knowledge');
 expect('Route #/knowledge shows FAQ', document.body.textContent.includes('पूछे जाने वाले प्रश्न'));
-await navigate('#/vedis');
+await navigate('/vedis');
 expect('Route #/vedis shows vedi grid', document.body.textContent.includes('ब्रह्मकुंड वेदी'));
-await navigate('#/gallery');
+await navigate('/gallery');
 expect('Route #/gallery shows gallery', document.body.textContent.includes('दर्शन चित्र'));
-await navigate('#/does-not-exist');
+await navigate('/does-not-exist');
 expect('Unknown route → 404 page', document.body.textContent.includes('पृष्ठ नहीं मिला'));
-await navigate('#/');
+await navigate('/');
 
 
 // ── Interaction tests ─────────────────────────────────
@@ -94,13 +94,13 @@ expect('Dark mode toggles .dark class', document.documentElement.classList.conta
 // SEO: title + meta description update per route (Hindi)
 i18n.changeLanguage('hi');
 await wait(300);
-await navigate('#/booking');
+await navigate('/booking');
 expect('Document title updates on route', document.title.includes('बुकिंग'));
 const descEl = document.querySelector('meta[name="description"]');
 expect('Meta description updates on route', !!descEl && descEl.content.includes('एक ही स्थान पर संपूर्ण व्यवस्था'));
 
 // Booking form fill + submit (with validation)
-await navigate('#/booking');
+await navigate('/booking');
 i18n.changeLanguage('hi');
 await wait(300);
 const setVal = (el, v) => {
@@ -167,7 +167,7 @@ await wait(300);
 expect('Edit returns to form', document.body.textContent.includes('यजमान का नाम'));
 
 // Gallery lightbox
-await navigate('#/gallery');
+await navigate('/gallery');
 i18n.changeLanguage('hi');
 await wait(400);
 const firstImg = document.querySelector('#gallery button img, section button img');
@@ -184,7 +184,8 @@ expect('dist/sitemap.xml exists', existsSync('dist/sitemap.xml'));
 const robots = readFileSync('dist/robots.txt', 'utf8');
 expect('robots.txt allows crawling', robots.includes('Allow: /') && robots.includes('Sitemap:'));
 const sitemap = readFileSync('dist/sitemap.xml', 'utf8');
-expect('sitemap.xml lists the site URL', sitemap.includes('divyanixbhakti-rgb.github.io/gayajimokshadham'));
+expect('sitemap.xml lists the production domain', sitemap.includes('GayaJiPindDaan.com'));
+expect('dist/.htaccess exists (Hostinger SPA rewrite)', existsSync('dist/.htaccess'));
 
 const realErrors = errors.filter((e) => !/Warning:|Download the React DevTools|not wrapped in act|Future Flag|scrollTo/i.test(e));
 console.log(`\nconsole.error (filtered): ${realErrors.length}`);

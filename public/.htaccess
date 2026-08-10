@@ -1,0 +1,56 @@
+# ═══════════════════════════════════════════════════════════════
+#  Gaya Ji Pitrapaksh Seva — Hostinger (Apache / LiteSpeed)
+#  Place this file in public_html (it is copied into dist/ on build).
+# ═══════════════════════════════════════════════════════════════
+
+# ── Force HTTPS ──────────────────────────────────────────────
+# Uncomment these two lines AFTER enabling the free SSL
+# certificate in hPanel (Hostinger auto-installs Let's Encrypt):
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} off
+#   RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+# </IfModule>
+
+# ── SPA routing: serve index.html for every route ───────────
+# Makes clean URLs like /booking, /vedis work on refresh/deep
+# links without 404 errors (BrowserRouter needs this).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # If the requested path is not an existing file or directory,
+  # rewrite it to index.html so React Router can handle it.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# ── Prevent directory listing ────────────────────────────────
+Options -Indexes
+
+# ── Browser caching (faster loads, better Core Web Vitals) ───
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType audio/wav "access plus 1 month"
+  ExpiresByType application/json "access plus 1 hour"
+</IfModule>
+
+# ── Gzip / Brotli compression ────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# ── Security headers ─────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

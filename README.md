@@ -1,8 +1,46 @@
 # 🪔 Gaya Ji Pitrapaksh Seva — GayaJiPindDaan.com
 
-A production-grade, fully responsive **Hindu pilgrimage web application** for Pind Daan, Tarpan and Shraddha services at **Vishnupad Temple, Gaya (Bihar)** — built with React + Vite + Tailwind CSS, deployed to **GitHub Pages**.
+A production-grade, fully responsive **Hindu pilgrimage web application** for Pind Daan, Tarpan and Shraddha services at **Vishnupad Temple, Gaya (Bihar)** — built with React + Vite + Tailwind CSS.
 
 > **Pitru Paksha 2026: 26 September – 10 October 2026** (Sarva Pitri Amavasya on 10 Oct)
+
+---
+
+## 🚀 THIS BRANCH = HOSTINGER DEPLOYMENT
+
+This `hostinger` branch is configured for **Hostinger shared hosting with your own domain** (e.g. `GayaJiPindDaan.com`):
+
+- **Clean URLs** — `BrowserRouter` (no `#` in links): `https://yourdomain.com/booking`, `/vedis`, …
+- **Absolute asset paths** — `vite.config.js` uses `base: '/'`
+- **`.htaccess` included** — SPA routing rewrite (no 404 on refresh/deep links), HTTPS redirect (commented until SSL is on), caching + gzip, security headers
+- **Production SEO** — `sitemap.xml` lists every page; `robots.txt`, canonical URL, hreflang, Open Graph and JSON-LD all point at `https://GayaJiPindDaan.com/` (⚠️ *placeholder — update when you buy the domain*)
+
+> The GitHub Pages version of this code lives on the `arena/019fecbc-gayajimokshadham` branch (HashRouter + relative paths).
+
+### How to deploy to Hostinger (from your phone, no coding needed)
+
+The `dist/` folder in this repository is **already built** — you can upload it directly:
+
+1. **Buy your domain** (e.g. from Hostinger) and attach it to your hosting plan in hPanel (Hostinger usually asks you to set nameservers once).
+2. In hPanel → **Websites → your site → File Manager** (or FTP/SSH), open **`public_html`**.
+3. **Upload the contents of `dist/`** (the folder, index.html, assets/, .htaccess, robots.txt, sitemap.xml, favicon) into `public_html`. On mobile: download this repository as ZIP → extract → upload.
+4. In hPanel → **Security → SSL** → enable the free Let's Encrypt certificate for your domain, then uncomment the HTTPS-redirect lines in `.htaccess`.
+5. Open your domain — the site is live with clean URLs.
+
+**When your domain is final, update these files** (search for `GayaJiPindDaan.com`):
+- `index.html` — canonical, Open Graph, hreflang, JSON-LD
+- `public/sitemap.xml` and `public/robots.txt`
+Then run `npm run build` and re-upload `dist/`.
+
+### Hostinger commands (for a computer with Node)
+
+```bash
+npm install
+npm run build     # fresh build into dist/
+npm test          # 41 smoke tests (languages, routes, validation, SEO files)
+```
+
+
 
 ---
 
@@ -37,15 +75,16 @@ Hindi (default) · English · Bengali · Gujarati · Punjabi — with Hindi→En
 
 ## 🛠 Tech stack
 
-React 18 · Vite 5 · Tailwind CSS 3 · react-router-dom (HashRouter) · react-i18next · Framer Motion · Lucide icons · Context API (theme)
+React 18 · Vite 5 · Tailwind CSS 3 · react-router-dom (BrowserRouter, clean URLs) · react-i18next · Framer Motion · Lucide icons · Context API (theme)
 
 ## 📁 Project structure
 
 ```
-├── .github/workflows/deploy.yml   # GitHub Pages CI/CD
-├── public/                        # favicon, images, bell chime audio
+├── public/                        # .htaccess, favicon, images, bell chime audio,
+│                                  # robots.txt, sitemap.xml (copied to dist/)
+├── dist/                          # PRE-BUILT production bundle — upload to public_html
 ├── scripts/json-loader.mjs        # node loader for the smoke test
-├── smoke.test.mjs                 # jsdom smoke test (26 checks)
+├── smoke.test.mjs                 # jsdom smoke test (41 checks)
 └── src/
     ├── components/                # Header, Hero, SacredStories, StepGuide, Gallery,
     │                              # VediDirectory, BookingEngine, Pitrapaksha,
@@ -67,13 +106,11 @@ npm run build      # static bundle → dist/
 npm run preview    # serve the production build
 ```
 
-## ☁️ Deployment (GitHub Pages)
+## ☁️ Deployment
 
-1. Push to `main` — the workflow `.github/workflows/deploy.yml` builds and deploys automatically.
-2. In **Settings → Pages**, set *Source* to **GitHub Actions**.
-3. The site will be live at `https://<user>.github.io/<repo>/` (HashRouter + relative `base: './'` mean no 404s and no path config).
+This branch is for **Hostinger** — see the **"THIS BRANCH = HOSTINGER DEPLOYMENT"** section at the top for the full step-by-step guide (upload `dist/` contents to `public_html`).
 
-Manual trigger: **Actions → Deploy to GitHub Pages → Run workflow**.
+> Looking for the GitHub Pages version? That lives on the `arena/019fecbc-gayajimokshadham` branch (HashRouter + relative paths, no `.htaccess` needed).
 
 ## ✏️ Contact details
 
@@ -101,14 +138,14 @@ Already built into the site:
 
 **To get indexed by Google (one-time, needs your Google account):**
 
-1. Go to https://search.google.com/search-console → **Add property** → choose **URL prefix** → paste `https://divyanixbhakti-rgb.github.io/gayajimokshadham/`
-2. Choose the **HTML tag** verification method — it shows a `<meta name="google-site-verification" content="...">` tag. Send that tag to the developer and it can be added to `index.html` and deployed (DNS/alternative methods also work).
+1. After your domain is live, go to https://search.google.com/search-console → **Add property** → choose **URL prefix** → paste `https://GayaJiPindDaan.com/` (or your final domain).
+2. Choose the **HTML tag** verification method — it shows a `<meta name="google-site-verification" content="...">` tag. Send that tag to the developer and it can be added to `index.html` and redeployed (DNS/alternative methods also work).
 3. After verification: **Sitemaps** (left menu) → submit `sitemap.xml` → visit **URL Inspection** with the site URL → **Request Indexing**.
 4. Indexing usually takes a few days to a few weeks.
 
 **Bing** (also powers DuckDuckGo): https://www.bing.com/webmasters → sign in with a Microsoft/Google account → add site → submit `sitemap.xml` (option: import your verified sites from Google Search Console with one click).
 
-If you later connect a custom domain (e.g. `GayaJiPindDaan.com`) via GitHub Pages settings, update the URLs in `index.html` (canonical/OG/hreflang), `public/sitemap.xml`, `public/robots.txt` and re-verify in Search Console.
+**Remember:** before going live, replace the `GayaJiPindDaan.com` placeholder in `index.html` (canonical/OG/hreflang/JSON-LD), `public/sitemap.xml` and `public/robots.txt` with your actual purchased domain, then rebuild.
 
 ---
 

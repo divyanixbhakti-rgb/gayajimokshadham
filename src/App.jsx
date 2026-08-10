@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Header from './components/Header';
 import Seo from './components/Seo';
@@ -12,7 +12,12 @@ import Pitrapaksha from './components/Pitrapaksha';
 import KnowledgeHub from './components/KnowledgeHub';
 import { ThemeProvider } from './context/ThemeContext';
 
-/** Scroll to top on every route change (HashRouter). */
+/**
+ * BrowserRouter gives clean URLs (https://domain.com/booking) —
+ * ideal for Hostinger hosting where public/.htaccess rewrites all
+ * routes to index.html (no 404s on refresh/deep links).
+ * (The GitHub Pages branch uses HashRouter instead.)
+ */
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -40,7 +45,7 @@ function NotFound() {
 export default function App() {
   return (
     <ThemeProvider>
-      <HashRouter>
+      <BrowserRouter>
         <ScrollToTop />
         <Seo />
         <div className="flex min-h-screen flex-col bg-parchment dark:bg-ratri">
@@ -58,7 +63,7 @@ export default function App() {
           </main>
           <ContactFooter />
         </div>
-      </HashRouter>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
