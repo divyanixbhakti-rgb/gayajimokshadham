@@ -1,8 +1,0 @@
-# Gaya Ji Pitrapaksh Seva — robots.txt
-# Allow all search engines to crawl and index the site.
-
-User-agent: *
-Allow: /
-
-# XML sitemap location
-Sitemap: https://divyanixbhakti-rgb.github.io/gayajimokshadham/sitemap.xml
