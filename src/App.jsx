@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Header from './components/Header';
+import Seo from './components/Seo';
 import ContactFooter from './components/ContactFooter';
 import HomePage from './pages/HomePage';
 import Gallery from './components/Gallery';
@@ -41,6 +42,7 @@ export default function App() {
     <ThemeProvider>
       <HashRouter>
         <ScrollToTop />
+        <Seo />
         <div className="flex min-h-screen flex-col bg-parchment dark:bg-ratri">
           <Header />
           <main className="flex-1">

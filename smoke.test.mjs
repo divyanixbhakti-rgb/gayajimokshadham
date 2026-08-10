@@ -91,6 +91,14 @@ if (themeBtn) themeBtn.click();
 await wait(300);
 expect('Dark mode toggles .dark class', document.documentElement.classList.contains('dark'));
 
+// SEO: title + meta description update per route (Hindi)
+i18n.changeLanguage('hi');
+await wait(300);
+await navigate('#/booking');
+expect('Document title updates on route', document.title.includes('बुकिंग'));
+const descEl = document.querySelector('meta[name="description"]');
+expect('Meta description updates on route', !!descEl && descEl.content.includes('एक ही स्थान पर संपूर्ण व्यवस्था'));
+
 // Booking form fill + submit (with validation)
 await navigate('#/booking');
 i18n.changeLanguage('hi');
@@ -168,6 +176,15 @@ if (firstImg) {
   await wait(400);
   expect('Lightbox opens with image', !!document.querySelector('img[src*="assets/"]') && document.body.textContent.includes('/ 12'));
 }
+
+// SEO files must exist in the built dist/ (copied from public/)
+import { existsSync, readFileSync } from 'node:fs';
+expect('dist/robots.txt exists', existsSync('dist/robots.txt'));
+expect('dist/sitemap.xml exists', existsSync('dist/sitemap.xml'));
+const robots = readFileSync('dist/robots.txt', 'utf8');
+expect('robots.txt allows crawling', robots.includes('Allow: /') && robots.includes('Sitemap:'));
+const sitemap = readFileSync('dist/sitemap.xml', 'utf8');
+expect('sitemap.xml lists the site URL', sitemap.includes('divyanixbhakti-rgb.github.io/gayajimokshadham'));
 
 const realErrors = errors.filter((e) => !/Warning:|Download the React DevTools|not wrapped in act|Future Flag|scrollTo/i.test(e));
 console.log(`\nconsole.error (filtered): ${realErrors.length}`);

@@ -90,6 +90,26 @@ The booking form validates Indian mobile numbers (**exactly 10 digits, starting 
 - Vedi names/rites per Gaya pind-daan tradition (Vishnupad, Falgu, Akshayavat, Gayasir, Dakshin/Uttar Manas, Pretshila, Brahmakund, Ramshila, Kakbali, Sita Kund, Gaya Kup, Gadhadhar, Brahma Sarovar).
 - Stories & articles from Gaya Mahatmya / Garuda Purana tradition (Vana Parva, Karna legend).
 
+## 🔍 Search engine visibility (SEO)
+
+Already built into the site:
+
+- `public/sitemap.xml` + `public/robots.txt` (auto-copied into `dist/` on build)
+- `src/components/Seo.jsx` — updates `<title>`, meta description, OG tags and `<html lang>` per route & language
+- Canonical URL, Open Graph + Twitter cards, `hreflang` for the 5 languages, JSON-LD structured data (`LocalBusiness` + `WebSite`) in `index.html`
+- Semantic HTML, descriptive image `alt` texts, responsive/mobile-friendly layout
+
+**To get indexed by Google (one-time, needs your Google account):**
+
+1. Go to https://search.google.com/search-console → **Add property** → choose **URL prefix** → paste `https://divyanixbhakti-rgb.github.io/gayajimokshadham/`
+2. Choose the **HTML tag** verification method — it shows a `<meta name="google-site-verification" content="...">` tag. Send that tag to the developer and it can be added to `index.html` and deployed (DNS/alternative methods also work).
+3. After verification: **Sitemaps** (left menu) → submit `sitemap.xml` → visit **URL Inspection** with the site URL → **Request Indexing**.
+4. Indexing usually takes a few days to a few weeks.
+
+**Bing** (also powers DuckDuckGo): https://www.bing.com/webmasters → sign in with a Microsoft/Google account → add site → submit `sitemap.xml` (option: import your verified sites from Google Search Console with one click).
+
+If you later connect a custom domain (e.g. `GayaJiPindDaan.com`) via GitHub Pages settings, update the URLs in `index.html` (canonical/OG/hreflang), `public/sitemap.xml`, `public/robots.txt` and re-verify in Search Console.
+
 ---
 
 🪔 *श्रद्धा से निर्मित — Crafted with devotion.*
