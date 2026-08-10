@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────
+   Gaya Ji Pitrapaksh Seva — Design System
+   Parchment light mode · Ratrikal dark mode
+   ───────────────────────────────────────────── */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-parchment text-charcoal font-body antialiased;
+  }
+
+  .dark body {
+    @apply bg-ratri text-sand;
+  }
+
+  ::selection {
+    @apply bg-golden/40 text-charcoal;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-sand;
+  }
+  .dark ::-webkit-scrollbar-track {
+    @apply bg-ratri-panel;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-golden/60 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-saffron;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold tracking-wide transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-golden/40 disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-saffron text-white shadow-lg shadow-saffron/30 hover:bg-saffron-dark hover:-translate-y-0.5 hover:shadow-xl hover:shadow-saffron/40;
+  }
+  .btn-golden {
+    @apply btn bg-golden text-maroon shadow-lg shadow-golden/30 hover:bg-golden-light hover:-translate-y-0.5;
+  }
+  .btn-outline {
+    @apply btn border-2 border-maroon/25 text-maroon hover:border-saffron hover:text-saffron;
+  }
+  .dark .btn-outline {
+    @apply border-golden/40 text-golden hover:border-golden hover:text-golden-light;
+  }
+  .btn-ghost {
+    @apply btn text-maroon hover:bg-sand;
+  }
+  .dark .btn-ghost {
+    @apply text-sand hover:bg-ratri-panel;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-2xl shadow-card border border-sand-dark/50 transition-all duration-300;
+  }
+  .dark .card {
+    @apply bg-ratri-panel border-ratri-edge shadow-none;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1.5 hover:shadow-card-lg hover:border-golden/50;
+  }
+
+  /* Chips / filters */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-maroon/15 bg-white px-4 py-2 text-sm font-semibold text-charcoal/70 transition-all cursor-pointer hover:border-saffron hover:text-saffron;
+  }
+  .dark .chip {
+    @apply bg-ratri-panel border-ratri-edge text-sand/70 hover:border-golden hover:text-golden;
+  }
+  .chip-active {
+    @apply bg-saffron border-saffron text-white shadow-md shadow-saffron/30 hover:text-white;
+  }
+  .dark .chip-active {
+    @apply bg-golden border-golden text-maroon shadow-glow hover:text-maroon;
+  }
+
+  /* Form fields */
+  .field {
+    @apply w-full rounded-xl border border-maroon/15 bg-white px-4 py-3 text-sm text-charcoal placeholder-charcoal/35 transition-all focus:border-saffron focus:outline-none focus:ring-4 focus:ring-saffron/15;
+  }
+  .dark .field {
+    @apply bg-ratri border-ratri-edge text-sand placeholder-sand/30 focus:border-golden focus:ring-golden/15;
+  }
+  .field-label {
+    @apply mb-1.5 block text-xs font-bold uppercase tracking-wider text-charcoal/60;
+  }
+  .dark .field-label {
+    @apply text-sand/60;
+  }
+
+  /* Section scaffolding */
+  .section {
+    @apply relative py-16 md:py-24;
+  }
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .section-eyebrow {
+    @apply mb-3 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.25em] text-saffron;
+  }
+  .dark .section-eyebrow {
+    @apply text-golden;
+  }
+  .section-title {
+    @apply font-heading text-3xl md:text-5xl leading-tight text-maroon;
+  }
+  .dark .section-title {
+    @apply text-golden;
+  }
+  .section-sub {
+    @apply mx-auto mt-4 max-w-2xl text-base md:text-lg text-charcoal/60 leading-relaxed;
+  }
+  .dark .section-sub {
+    @apply text-sand/60;
+  }
+
+  /* Temple-frame card — ornate double border with corner dots */
+  .temple-frame {
+    @apply relative rounded-2xl border-2 border-golden/40 bg-white/80 p-6;
+    background-image:
+      radial-gradient(circle at 12px 12px, rgba(229, 169, 60, 0.9) 2px, transparent 2.5px),
+      radial-gradient(circle at calc(100% - 12px) 12px, rgba(229, 169, 60, 0.9) 2px, transparent 2.5px),
+      radial-gradient(circle at 12px calc(100% - 12px), rgba(229, 169, 60, 0.9) 2px, transparent 2.5px),
+      radial-gradient(circle at calc(100% - 12px) calc(100% - 12px), rgba(229, 169, 60, 0.9) 2px, transparent 2.5px);
+  }
+  .dark .temple-frame {
+    @apply bg-ratri-panel/80 border-golden/30;
+  }
+
+  /* Shimmering golden text */
+  .text-shimmer {
+    background: linear-gradient(100deg, #d9531e 20%, #e5a93c 40%, #f2c469 50%, #e5a93c 60%, #d9531e 80%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 5s linear infinite;
+  }
+
+  /* Maroon glow text for dark hero */
+  .text-glow-gold {
+    text-shadow: 0 0 18px rgba(229, 169, 60, 0.55), 0 0 42px rgba(229, 169, 60, 0.3);
+  }
+}
+
+@layer utilities {
+  /* Om mandala pattern — imported via src so Vite rewrites the URL
+     relative to the deployment base path (GitHub Pages sub-path safe). */
+  .bg-om-pattern {
+    background-image: url('./assets/om-pattern.svg');
+    background-repeat: repeat;
+  }
+  .scrollbar-hide {
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

@@ -1,1 +1,115 @@
-# gayajimokshadham
+# 🪔 Gaya Ji Pitrapaksh Seva — GayaJiPindDaan.com
+
+A production-grade, fully responsive **Hindu pilgrimage web application** for Pind Daan, Tarpan and Shraddha services at **Vishnupad Temple, Gaya (Bihar)** — built with React + Vite + Tailwind CSS, deployed to **GitHub Pages**.
+
+> **Pitru Paksha 2026: 26 September – 10 October 2026** (Sarva Pitri Amavasya on 10 Oct)
+
+---
+
+## ✨ Features
+
+| Section | Highlights |
+| --- | --- |
+| **Header** | Sticky nav, animated Panchang ticker, 5-language dropdown, Ratrikal dark-mode toggle |
+| **Hero** | Vishnupad visual, animated temple bell with synthesized chime, stats, CTAs |
+| **Sacred Stories** | Gaya Asur timeline (7 eras) + Sita Mata's 5 Witnesses (Panch Sakshi) cards |
+| **Step Guide** | 7-step Pind Daan visual stepper (Sankalp → Kshamapan) |
+| **Gallery** | Masonry gallery, 4 category filters, full lightbox (prev/next, keyboard-free tap) |
+| **Vedi Directory** | 14 sacred vedis (13 classical + Brahma Sarovar) with deity, rites, Google-Maps modal & directions |
+| **Booking Engine** | 4 tabs (Pind Daan / Pandit / Cab / Hotel), live summary, validation, WhatsApp deep-link, no-advance trust badges |
+| **Pitru Paksha 2026** | Live countdown, 15-day tithi calendar, crowd forecast chart, daily muhurats (Gaya) |
+| **Knowledge Hub** | 5 Garuda Purana & Gaya Mahatmya articles + **54 FAQs** in 6 categories with search |
+| **Footer** | Centralised contact config, timings, social links, floating WhatsApp button |
+
+## 🌐 i18n — 5 languages
+
+Hindi (default) · English · Bengali · Gujarati · Punjabi — with Hindi→English fallback chain.
+
+- UI chrome: `src/i18n/locales/{hi,en,bn,gu,pa}.json`
+- Long-form content (vedis, stories, steps, articles, 54 FAQs): authored per-language in `src/data/*`
+
+## 🎨 Design system
+
+- **Palette:** Saffron `#D9531E` · Golden `#E5A93C` · Maroon `#58111A` · Sandstone `#F5EBE0` · Parchment `#FDFBF7` · Charcoal `#211C1D`
+- **Ratrikal dark mode:** `#0C101C` background, glowing brass highlights
+- **Motifs:** CSS-swinging temple bell, Om/lotus SVG dividers, manuscript texture, shimmer text, floating ॐ
+- **Fonts:** Cinzel · Rozha One · Plus Jakarta Sans (+ Noto Sans for Bengali/Gujarati/Gurmukhi)
+
+## 🛠 Tech stack
+
+React 18 · Vite 5 · Tailwind CSS 3 · react-router-dom (HashRouter) · react-i18next · Framer Motion · Lucide icons · Context API (theme)
+
+## 📁 Project structure
+
+```
+├── .github/workflows/deploy.yml   # GitHub Pages CI/CD
+├── public/                        # favicon, images, bell chime audio
+├── scripts/json-loader.mjs        # node loader for the smoke test
+├── smoke.test.mjs                 # jsdom smoke test (26 checks)
+└── src/
+    ├── components/                # Header, Hero, SacredStories, StepGuide, Gallery,
+    │                              # VediDirectory, BookingEngine, Pitrapaksha,
+    │                              # KnowledgeHub, ContactFooter, TempleBell + shared
+    ├── context/ThemeContext.jsx   # Ratrikal dark-mode
+    ├── i18n/                      # i18next setup + 5 locales
+    ├── data/                      # vedis (14), gallery, 54 FAQs, stories, steps,
+    │                              # articles, pitru paksha 2026, contact config
+    └── pages/HomePage.jsx
+```
+
+## 🚀 Local development
+
+```bash
+npm install
+npm run dev        # http://localhost:5173
+npm test           # jsdom smoke test (languages, routes, dark mode, booking, lightbox)
+npm run build      # static bundle → dist/
+npm run preview    # serve the production build
+```
+
+## ☁️ Deployment (GitHub Pages)
+
+1. Push to `main` — the workflow `.github/workflows/deploy.yml` builds and deploys automatically.
+2. In **Settings → Pages**, set *Source* to **GitHub Actions**.
+3. The site will be live at `https://<user>.github.io/<repo>/` (HashRouter + relative `base: './'` mean no 404s and no path config).
+
+Manual trigger: **Actions → Deploy to GitHub Pages → Run workflow**.
+
+## ✏️ Contact details
+
+All contact details are centralised in **`src/data/contactConfig.js`** — edit once, everywhere updates:
+
+- 📞 Phone / WhatsApp: **+91 91231 71655** (`wa.me/919123171655`)
+- ✉️ Enquiry email (booking form + footer): **DivyaNix.bhakti@gmail.com**
+
+The booking form validates Indian mobile numbers (**exactly 10 digits, starting with 6–9** — no prefix/spaces allowed, input capped at 10 digits), email format, and a preferred date **between today and 90 days ahead**. On "Send Request" the visitor picks a delivery method — **WhatsApp** (deep-link to `wa.me/919123171655`) or **Email** (`mailto:DivyaNix.bhakti@gmail.com`) — both opening with the validated enquiry pre-filled. The site ships with a demo disclaimer; verify tithi timings and prices with the seva desk.
+
+## 📜 Content sources
+
+- Pitru Paksha 2026 tithi calendar cross-checked with public panchanga listings (26 Sep – 10 Oct 2026).
+- Vedi names/rites per Gaya pind-daan tradition (Vishnupad, Falgu, Akshayavat, Gayasir, Dakshin/Uttar Manas, Pretshila, Brahmakund, Ramshila, Kakbali, Sita Kund, Gaya Kup, Gadhadhar, Brahma Sarovar).
+- Stories & articles from Gaya Mahatmya / Garuda Purana tradition (Vana Parva, Karna legend).
+
+## 🔍 Search engine visibility (SEO)
+
+Already built into the site:
+
+- `public/sitemap.xml` + `public/robots.txt` (auto-copied into `dist/` on build)
+- `src/components/Seo.jsx` — updates `<title>`, meta description, OG tags and `<html lang>` per route & language
+- Canonical URL, Open Graph + Twitter cards, `hreflang` for the 5 languages, JSON-LD structured data (`LocalBusiness` + `WebSite`) in `index.html`
+- Semantic HTML, descriptive image `alt` texts, responsive/mobile-friendly layout
+
+**To get indexed by Google (one-time, needs your Google account):**
+
+1. Go to https://search.google.com/search-console → **Add property** → choose **URL prefix** → paste `https://divyanixbhakti-rgb.github.io/gayajimokshadham/`
+2. Choose the **HTML tag** verification method — it shows a `<meta name="google-site-verification" content="...">` tag. Send that tag to the developer and it can be added to `index.html` and deployed (DNS/alternative methods also work).
+3. After verification: **Sitemaps** (left menu) → submit `sitemap.xml` → visit **URL Inspection** with the site URL → **Request Indexing**.
+4. Indexing usually takes a few days to a few weeks.
+
+**Bing** (also powers DuckDuckGo): https://www.bing.com/webmasters → sign in with a Microsoft/Google account → add site → submit `sitemap.xml` (option: import your verified sites from Google Search Console with one click).
+
+If you later connect a custom domain (e.g. `GayaJiPindDaan.com`) via GitHub Pages settings, update the URLs in `index.html` (canonical/OG/hreflang), `public/sitemap.xml`, `public/robots.txt` and re-verify in Search Console.
+
+---
+
+🪔 *श्रद्धा से निर्मित — Crafted with devotion.*

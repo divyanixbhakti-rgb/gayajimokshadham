@@ -1,0 +1,270 @@
+{
+  "app": {
+    "name": "Gaya Ji Pitrapaksh Seva",
+    "brand": "GayaJiPindDaan.com",
+    "slogan": "A Sacred Vow of Devotion"
+  },
+  "nav": {
+    "home": "Home",
+    "stories": "Sacred Stories",
+    "gallery": "Gallery",
+    "vedis": "Vedi Directory",
+    "booking": "Booking",
+    "pitrapaksha": "Pitru Paksha 2026",
+    "knowledge": "Knowledge Hub",
+    "contact": "Contact",
+    "bookNow": "Book Now",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "ticker": {
+    "label": "Panchang",
+    "item1": "Pitru Paksha 2026: 26 Sep – 10 Oct",
+    "item2": "Vishnupad Temple Darshan: 4:00 AM – 10:00 PM",
+    "item3": "Sarva Pitri Amavasya (Mahalaya): 10 Oct 2026",
+    "item4": "54 sacred vedis of Gaya — 13 principal Pind Daan vedis"
+  },
+  "hero": {
+    "badge": "Gaya · Bihar · India",
+    "title1": "Gaya Ji Pitrapaksh Seva",
+    "title2": "Liberation for your ancestors — peace for you",
+    "subtitle": "Complete arrangements for Pind Daan, Tarpan and Shraddha on the sacred land of Vishnupad — including pandit, cab and hotel. Pitru Paksha 2026 bookings are now open!",
+    "ctaPrimary": "Book Pind Daan",
+    "ctaSecondary": "View Pitru Paksha Calendar",
+    "stat1v": "54+",
+    "stat1l": "Sacred Vedis",
+    "stat2v": "100K+",
+    "stat2l": "Devotees Served",
+    "stat3v": "25+",
+    "stat3l": "Years of Seva",
+    "scroll": "Scroll down",
+    "bellHint": "Ring the bell"
+  },
+  "common": {
+    "viewAll": "View all",
+    "readMore": "Read more",
+    "close": "Close",
+    "prev": "Previous",
+    "next": "Next",
+    "all": "All",
+    "language": "Language",
+    "darkMode": "Ratrikal (Dark)",
+    "lightMode": "Diva (Light)",
+    "today": "Today",
+    "bookNow": "Book Now",
+    "callNow": "Call Now",
+    "whatsappUs": "WhatsApp Us",
+    "viewOnMap": "View on map",
+    "directions": "Directions",
+    "deity": "Presiding Deity",
+    "ritual": "Main Rites",
+    "share": "Share"
+  },
+  "sections": {
+    "storiesTitle": "Sacred Stories",
+    "storiesSub": "The hallowed legends of Gaya Ji — where history, devotion and spirituality are woven into one thread.",
+    "stepsTitle": "Pind Daan in 7 Steps",
+    "stepsSub": "The complete scripture-based Gaya paddhati — from Sankalp to Kshamapan.",
+    "galleryTitle": "Darshan Gallery",
+    "gallerySub": "Sacred glimpses of Gaya Ji — temples, ghats, vedis and moments of devotion.",
+    "vedisTitle": "Vedi Directory",
+    "vedisSub": "Complete details of the 13 principal Pind Daan vedis — with maps, presiding deities and rites.",
+    "bookingTitle": "Seva Booking",
+    "bookingSub": "Pind Daan, Pandit, Cab and Hotel — complete arrangements in one place.",
+    "pitraTitle": "Pitru Paksha 2026 Calendar",
+    "pitraSub": "Full Pitru Paksha calendar, crowd forecast and daily muhurats — at a glance.",
+    "knowTitle": "Knowledge Hub",
+    "knowSub": "Answers from the Garuda Purana, Gaya Mahatmya and everything about Pind Daan.",
+    "ctaTitle": "Prepare for Pitru Paksha 2026",
+    "ctaSub": "26 Sep – 10 Oct 2026 · Free pickup & special discount on advance booking"
+  },
+  "stories": {
+    "tabAsur": "The Gaya Asur Saga",
+    "tabSita": "Sita Mata's 5 Witnesses",
+    "asurNote": "From Gayasura's tapobhumi to the city of liberation — the journey of Gaya Ji.",
+    "sitaNote": "When Sita Mata vowed her truthfulness before Shri Rama, she invoked five immortal witnesses — all five still grace Gaya today.",
+    "sitaIntro": "Panch Sakshi — before whom a vow becomes imperishable"
+  },
+  "gallery": {
+    "lightboxHint": "Click an image to view it larger",
+    "cat": {
+      "all": "All",
+      "temple": "Temple",
+      "river": "River",
+      "ritual": "Ritual",
+      "nature": "Nature"
+    }
+  },
+  "vedis": {
+    "filterTitle": "Filter by category",
+    "found": "vedis found",
+    "modalTitle": "Vedi Map",
+    "modalSub": "View the location on Google Maps",
+    "openMaps": "Open in Google Maps",
+    "searchPlaceholder": "Search vedi or deity…",
+    "empty": "No vedi found — try changing the filter.",
+    "cat": {
+      "temple": "Temple",
+      "river": "River",
+      "hill": "Hill",
+      "kund": "Kund",
+      "tree": "Tree"
+    }
+  },
+  "booking": {
+    "sub": "Fill the form below — our seva team will contact you within 30 minutes to confirm.",
+    "tabs": {
+      "pind": "Pind Daan",
+      "pandit": "Pandit Ji",
+      "cab": "Cab / Pickup",
+      "hotel": "Hotel",
+      "astthi": "Asthi Visarjan",
+      "online": "Online Pind Daan"
+    },
+    "fields": {
+      "name": "Yajman's Name",
+      "phone": "Mobile Number",
+      "email": "Email *",
+      "date": "Preferred Date",
+      "vedi": "Choose Vedi / Rite",
+      "persons": "Number of Devotees",
+      "gotra": "Gotra",
+      "ancestorName": "Ancestors' Names (if known)",
+      "message": "Special Requirements",
+      "city": "Arrival City",
+      "mode": "Arrival Mode",
+      "arrival": "Arrival Time / Train-Flight No.",
+      "cabType": "Vehicle Type",
+      "hotelType": "Hotel Type",
+      "nights": "Number of Nights",
+      "language": "Pandit's Language",
+      "packageType": "Package Type",
+      "pickup": "Need Pickup?"
+    },
+    "placeholders": {
+      "name": "e.g. Ram Kumar Sharma",
+      "phone": "9123171655",
+      "email": "you@email.com",
+      "gotra": "e.g. Kashyap",
+      "message": "Any special request…"
+    },
+    "vediOptions": {
+      "ekodrishti": "Ekodrishti — 3 main vedis (1 day)",
+      "sampurna": "Full 13-vedi rite (2 days)",
+      "online": "Online Pind Daan (by proxy)",
+      "tripindi": "Tripindi Shraddha",
+      "narayanbali": "Narayan Bali",
+      "astthi": "Asthi Visarjan + Pind Daan"
+    },
+    "cabOptions": {
+      "sedan": "Sedan (4 seats)",
+      "suv": "SUV (7 seats)",
+      "tempo": "Tempo (12 seats)",
+      "bus": "Bus (35 seats)"
+    },
+    "hotelOptions": {
+      "dharamshala": "Dharamshala",
+      "budget": "Budget Hotel",
+      "standard": "Standard Hotel",
+      "premium": "Premium / 3-Star"
+    },
+    "summary": {
+      "title": "Booking Summary",
+      "date": "Date",
+      "name": "Yajman",
+      "phone": "Mobile",
+      "type": "Service Type",
+      "details": "Details",
+      "email": "Email"
+    },
+    "success": {
+      "title": "Thank you! Your request has been received.",
+      "text": "Our seva team will contact you shortly. For faster confirmation, send the details on WhatsApp.",
+      "whatsapp": "Send on WhatsApp",
+      "email": "Send via Email"
+    },
+    "note": "No advance payment — pay only after confirmation.",
+    "required": "Please fill the required details",
+    "send": "Send Booking Request",
+    "errors": {
+      "required": "Please fill the required details",
+      "invalidPhone": "Please enter a 10-digit mobile number only (starting with 6–9)",
+      "invalidEmail": "Please enter a valid email address (e.g. name@email.com)",
+      "invalidDate": "Please choose today or a future date (up to 90 days ahead)"
+    },
+    "afterSubmit": "After validation, you will see two ways to send — WhatsApp or Email.",
+    "choose": {
+      "title": "How would you like to send your enquiry?",
+      "sub": "This is a static website — there is no server or database here, so your enquiry reaches us directly through your own app. Choose one of the two methods below — it opens with your enquiry pre-filled.",
+      "summaryTitle": "Your enquiry — please review before sending",
+      "whatsapp": "Send via WhatsApp",
+      "whatsappDesc": "Opens WhatsApp with your message pre-filled",
+      "email": "Send via Email",
+      "emailDesc": "Opens your email app with the enquiry pre-filled",
+      "edit": "Edit the form",
+      "call": "or call us directly:"
+    }
+  },
+  "pitra": {
+    "title": "Pitru Paksha 2026",
+    "sub": "Shraddha dates, crowd forecast and daily timings — everything in one place.",
+    "countdownTitle": "Pitru Paksha begins in",
+    "countdownStarted": "Pitru Paksha is ongoing — Jai Gaya Ji! 🙏",
+    "days": "Days",
+    "hours": "Hours",
+    "mins": "Minutes",
+    "secs": "Seconds",
+    "calendarTitle": "Shraddha Tithi Calendar",
+    "calendarSub": "Shraddha by tithi — 26 September to 10 October 2026",
+    "crowdTitle": "Crowd Forecast",
+    "crowdSub": "Expected daily pilgrim numbers based on previous years",
+    "timingsTitle": "Daily Muhurat (Gaya)",
+    "timingsSub": "Auspicious times for Pind Daan — early morning is best",
+    "timingsNote": "* Time from Brahma Muhurat to Kutup Muhurat is considered best for shraddha.",
+    "startLabel": "Start",
+    "endLabel": "End",
+    "legend": "Tithi",
+    "live": "Today",
+    "nextYear": "Next Pitru Paksha: 26 Sep – 10 Oct 2026",
+    "crowdLow": "Low crowd",
+    "crowdModerate": "Moderate crowd",
+    "crowdHigh": "High crowd",
+    "crowdVeryHigh": "Very high crowd",
+    "peakDays": "Crowd peaks around Amavasya — advance booking is essential."
+  },
+  "knowledge": {
+    "articlesTitle": "Garuda Purana & Gaya Mahatmya",
+    "articlesSub": "Enlightening writings from the scriptures — to understand the depth of devotion.",
+    "faqTitle": "Frequently Asked Questions",
+    "faqSub": "Detailed answers to 54+ questions — find exactly what you wish to know.",
+    "catAll": "All Categories",
+    "faqCount": "questions",
+    "searchPlaceholder": "Search a question…"
+  },
+  "footer": {
+    "tagline": "Complete Pind Daan, Tarpan & Shraddha services on the sacred land of Vishnupad — with devotion and transparency.",
+    "quickLinks": "Quick Links",
+    "contactUs": "Contact Us",
+    "timings": "Seva Timings",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved.",
+    "madeWith": "Crafted with devotion",
+    "disclaimer": "Note: This is a demo service website. Please verify prices, dates and availability directly with the seva desk before confirming any booking.",
+    "hours": "Seva desk: daily 5:00 AM – 9:00 PM (24×7 during Pitru Paksha)"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "sub": "Sorry, this page is not available.",
+    "back": "Back to Home"
+  },
+  "pandit": {
+    "language": "Choose pandit's language",
+    "langs": {
+      "hi": "Hindi",
+      "bhojpuri": "Bhojpuri",
+      "en": "English",
+      "bn": "Bengali",
+      "gu": "Gujarati"
+    }
+  }
+}
