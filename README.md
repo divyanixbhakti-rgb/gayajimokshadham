@@ -82,7 +82,7 @@ All contact details are centralised in **`src/data/contactConfig.js`** — edit 
 - 📞 Phone / WhatsApp: **+91 91231 71655** (`wa.me/919123171655`)
 - ✉️ Enquiry email (booking form + footer): **DivyaNix.bhakti@gmail.com**
 
-The booking form validates Indian mobile numbers (10 digits, starts 6–9, optional `+91`/`0` prefix) and email format, and lets the visitor send the enquiry via **email** (opens their mail app pre-filled to the address above) or **WhatsApp** deep-link. The site ships with a demo disclaimer; verify tithi timings and prices with the seva desk.
+The booking form validates Indian mobile numbers (**exactly 10 digits, starting with 6–9** — no prefix/spaces allowed, input capped at 10 digits), email format, and a preferred date **between today and 90 days ahead**. On "Send Request" the visitor picks a delivery method — **WhatsApp** (deep-link to `wa.me/919123171655`) or **Email** (`mailto:DivyaNix.bhakti@gmail.com`) — both opening with the validated enquiry pre-filled. The site ships with a demo disclaimer; verify tithi timings and prices with the seva desk.
 
 ## 📜 Content sources
 

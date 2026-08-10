@@ -143,7 +143,7 @@
     },
     "placeholders": {
       "name": "e.g. Ram Kumar Sharma",
-      "phone": "+91XXXXXXXXXX",
+      "phone": "9123171655",
       "email": "you@email.com",
       "gotra": "e.g. Kashyap",
       "message": "Any special request…"
@@ -188,8 +188,9 @@
     "send": "Send Booking Request",
     "errors": {
       "required": "Please fill the required details",
-      "invalidPhone": "Please enter a valid mobile number (e.g. +91 91231 71655)",
-      "invalidEmail": "Please enter a valid email address (e.g. name@email.com)"
+      "invalidPhone": "Please enter a 10-digit mobile number only (starting with 6–9)",
+      "invalidEmail": "Please enter a valid email address (e.g. name@email.com)",
+      "invalidDate": "Please choose today or a future date (up to 90 days ahead)"
     },
     "afterSubmit": "After validation, you will see two ways to send — WhatsApp or Email.",
     "choose": {

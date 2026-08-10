@@ -52,9 +52,7 @@ export default function BookingEngine() {
   const [error, setError] = useState('');
   const [errors, setErrors] = useState({});
 
-  const set = (k) => (e) => {
-    setForm((f) => ({ ...f, [k]: e.target.value }));
-    // clear the field's error + generic error as soon as the user edits it
+  const clearErr = (k) => {
     setErrors((prev) => {
       const next = { ...prev };
       delete next[k];
@@ -63,24 +61,45 @@ export default function BookingEngine() {
     });
   };
 
-  /** Indian mobile validation: 10 digits, starts 6–9, optional +91 / 0 prefix */
-  const isValidPhone = (phone) => {
-    const digits = phone.replace(/[\s\-()]/g, '');
-    return /^(\+?91|0)?[6-9]\d{9}$/.test(digits);
+  const set = (k) => (e) => {
+    setForm((f) => ({ ...f, [k]: e.target.value }));
+    clearErr(k);
   };
+
+  /** Phone: digits only, capped at exactly 10 */
+  const setPhone = (e) => {
+    const v = e.target.value.replace(/\D/g, '').slice(0, 10);
+    setForm((f) => ({ ...f, phone: v }));
+    clearErr('phone');
+  };
+
+  /** Date: kept within [today, today+90] by native min/max + JS check */
+  const setDate = (e) => {
+    setForm((f) => ({ ...f, date: e.target.value }));
+    clearErr('date');
+  };
+
+  /** Local ISO date helpers (YYYY-MM-DD) */
+  const toISO = (d) =>
+    `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const todayISO = toISO(new Date());
+  const maxDateISO = toISO(new Date(Date.now() + 90 * 24 * 60 * 60 * 1000));
+
+  /** Indian mobile: exactly 10 digits, starting with 6–9 (no prefix, no spaces) */
+  const isValidPhone = (phone) => /^[6-9]\d{9}$/.test(phone);
 
   const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
 
+  /** Date must be today or within the next 90 days */
+  const isValidDate = (dateStr) => !!dateStr && dateStr >= todayISO && dateStr <= maxDateISO;
+
   const validate = () => {
     const errs = {};
-    if (!form.name.trim() || !form.phone.trim() || !form.date.trim()) {
-      errs.required = t('booking.errors.required');
-    }
-    if (tab === 'pind' && !form.vedi) {
-      errs.vedi = t('booking.errors.required');
-    }
+    if (!form.name.trim()) errs.required = t('booking.errors.required');
+    if (tab === 'pind' && !form.vedi) errs.vedi = t('booking.errors.required');
     if (!isValidPhone(form.phone)) errs.phone = t('booking.errors.invalidPhone');
     if (!isValidEmail(form.email)) errs.email = t('booking.errors.invalidEmail');
+    if (!isValidDate(form.date)) errs.date = t('booking.errors.invalidDate');
     return errs;
   };
 
@@ -187,6 +206,7 @@ export default function BookingEngine() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
             onSubmit={submit}
+            noValidate
             className="card p-6 md:p-8"
           >
             <div className="grid gap-5 sm:grid-cols-2">
@@ -199,11 +219,12 @@ export default function BookingEngine() {
                 <input
                   className={`${input} ${errors.phone ? '!border-red-500 dark:!border-red-400' : ''}`}
                   value={form.phone}
-                  onChange={set('phone')}
+                  onChange={setPhone}
                   placeholder={t('booking.placeholders.phone')}
                   type="tel"
-                  inputMode="tel"
-                  maxLength="18"
+                  inputMode="numeric"
+                  maxLength={10}
+                  pattern="[6-9][0-9]{9}"
                   required
                 />
                 {errors.phone && (
@@ -214,7 +235,20 @@ export default function BookingEngine() {
               </div>
               <div>
                 <label className={label}>{t('booking.fields.date')} *</label>
-                <input className={input} value={form.date} onChange={set('date')} type="date" required />
+                <input
+                  className={`${input} ${errors.date ? '!border-red-500 dark:!border-red-400' : ''}`}
+                  value={form.date}
+                  onChange={setDate}
+                  type="date"
+                  min={todayISO}
+                  max={maxDateISO}
+                  required
+                />
+                {errors.date && (
+                  <p className="mt-1.5 text-xs font-semibold text-red-600 dark:text-red-400">
+                    ⚠️ {errors.date}
+                  </p>
+                )}
               </div>
               <div>
                 <label className={label}>{t('booking.fields.email')} *</label>

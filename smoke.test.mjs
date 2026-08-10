@@ -108,22 +108,42 @@ const byLabel = (label) => {
 };
 const submitBtn = () => [...document.querySelectorAll('button')].find((b) => b.textContent.includes('बुकिंग अनुरोध भेजें'));
 
-// 1) invalid phone + invalid email → validation errors, no chooser
+const d = new Date();
+const fmtIso = (x) => `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`;
+const pastISO = fmtIso(new Date(d.getTime() - 5 * 86400000));
+const farFutureISO = fmtIso(new Date(d.getTime() + 200 * 86400000));
+const validFutureISO = fmtIso(new Date(d.getTime() + 7 * 86400000));
+
+// 1) invalid phone + past date + invalid email → validation errors, no chooser
 setVal(byLabel('यजमान का नाम'), 'राम कुमार शर्मा');
 setVal(byLabel('मोबाइल नंबर'), '12345');
 setVal(byLabel('ईमेल'), 'a@b'); // passes native type=email, fails our stricter dot rule
-setVal(byLabel('वांछित तिथि'), '2026-10-10');
+setVal(byLabel('वांछित तिथि'), pastISO);
 setVal(byLabel('वेदी / विधान चुनें'), 'ekodrishti');
 await wait(200);
 submitBtn().click();
 await wait(400);
-expect('Invalid phone shows validation error', document.body.textContent.includes('सही मोबाइल नंबर'));
+expect('Invalid phone shows 10-digit validation error', document.body.textContent.includes('10 अंकों का मोबाइल नंबर'));
 expect('Invalid email shows validation error', document.body.textContent.includes('सही ईमेल'));
+expect('Past date shows validation error', document.body.textContent.includes('आज या भविष्य की तिथि'));
 expect('No chooser with invalid data', !document.body.textContent.includes('अपनी पूछताछ कैसे भेजें'));
 
-// 2) valid details → chooser with WhatsApp + Email options
-setVal(byLabel('मोबाइल नंबर'), '+91 91231 71655');
+// 2) future date beyond 90 days → error
+setVal(byLabel('वांछित तिथि'), farFutureISO);
+await wait(200);
+submitBtn().click();
+await wait(300);
+expect('Date beyond 90 days shows validation error', document.body.textContent.includes('आज या भविष्य की तिथि'));
+
+// 3) phone input caps at 10 digits even if more typed
+setVal(byLabel('मोबाइल नंबर'), '9123171655099'); // 13 digits
+const phoneVal = byLabel('मोबाइल नंबर').value;
+expect('Phone field holds max 10 digits', phoneVal.length === 10 && phoneVal === '9123171655');
+
+// 4) valid details → chooser with WhatsApp + Email options
+setVal(byLabel('मोबाइल नंबर'), '9123171655');
 setVal(byLabel('ईमेल'), 'test@example.com');
+setVal(byLabel('वांछित तिथि'), validFutureISO);
 await wait(200);
 submitBtn().click();
 await wait(500);
@@ -132,7 +152,7 @@ expect('WhatsApp option present', document.body.innerHTML.includes('wa.me/919123
 expect('Email option present', document.body.innerHTML.includes('mailto:DivyaNix.bhakti@gmail.com'));
 expect('Edit form option present', document.body.textContent.includes('फॉर्म वापस संपादित करें'));
 
-// 3) Edit goes back to the form
+// 5) Edit goes back to the form
 const editBtn = [...document.querySelectorAll('button')].find((b) => b.textContent.includes('फॉर्म वापस संपादित करें'));
 editBtn.click();
 await wait(300);
